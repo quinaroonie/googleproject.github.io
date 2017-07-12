@@ -15,25 +15,44 @@
 # limitations under the License.
 #
 import webapp2
-import json
-import urllib2
+import os 
+import jinja2
+import random
 
-response = urllib2.urlopen("https://randomuser.me/api/")
-content = response.read()
-content_dict = json.loads(content)
+jinja_enviroment = jinja2.Environment(
+	loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
+class MainHandler(webapp2.RequestHandler):
+	def get(self):
+		self.response.write('Hello world!')
 
-class BabyHandler(webapp2.RequestHandler):
-    def get(self):
-    	base_url = "https://randomuser.me/api/"
-    	url_params { 'q' : 'person,' : 'api_key' : 'dc6zaT0xFJmzC', 'limit' :10}
+class ResumeHandler(webapp2.RequestHandler):
+	"""docstring for ResumeHandler"""
+	def get(self):
 
+  		name = self.request.get('name')
+  		job_title = self.request.get('jobtitle')
+  		email = self.request.get('email')
+  		phone_number = self.request.get('phonenumber')
+  		personal_websitelink = self.request.get('personalwebsite')
+  		template = jinja_enviroment.get_template('startresume.html')
+  		self.response.write(template.render())
 
+  	def post(self):
 
+  		
+  		self.response.write(template.render(
+  			{
+  			'name': name,
+  			'jobtitle': job_title,
+  			'email': email,
+  			'phonenumber': phone_number,
+  			'personalwebsite': personal_websitelink,
+  			}))
 
-
-
+  		 
 
 app = webapp2.WSGIApplication([
-    ('/baby', MainHandler)
+    ('/', MainHandler),
+    ('/startresume', ResumeHandler)
 ], debug=True)
