@@ -30,17 +30,21 @@ class ResumeHandler(webapp2.RequestHandler):
 	"""docstring for ResumeHandler"""
 	def get(self):
 
-  		name = self.request.get('name')
-  		job_title = self.request.get('jobtitle')
-  		email = self.request.get('email')
-  		phone_number = self.request.get('phonenumber')
-  		personal_websitelink = self.request.get('personalwebsite')
+  		
   		template = jinja_enviroment.get_template('startresume.html')
   		self.response.write(template.render())
 
   	def post(self):
 
-  		
+  		name = self.request.get('name')
+  		job_title = self.request.get('jobtitle')
+  		email = self.request.get('email')
+  		phone_number = self.request.get('phonenumber')
+  		personal_websitelink = self.request.get('personalwebsite')
+
+
+
+  		template =jinja_enviroment.get_template('finishedresume.html')
   		self.response.write(template.render(
   			{
   			'name': name,
@@ -50,9 +54,12 @@ class ResumeHandler(webapp2.RequestHandler):
   			'personalwebsite': personal_websitelink,
   			}))
 
+  		
+
+
   		 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/startresume', ResumeHandler)
+    ('/resume', ResumeHandler)
 ], debug=True)
