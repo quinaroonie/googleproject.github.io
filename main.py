@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 #
 # Copyright 2007 Google Inc.
@@ -14,8 +15,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
 
+import webapp2
+import jinja2
+import os 
+import urllib2
+import json
+
+jinja_environment = jinja2.Environment(
+	loader = jinja2.FileSystemLoader(
+		os.path.dirname(__file__)))
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('apphome.html')
@@ -30,7 +39,7 @@ class MainHandler(webapp2.RequestHandler):
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
-		        
+                
 
 
 
@@ -44,6 +53,20 @@ class MainHandler(webapp2.RequestHandler):
             }
             ))
 
+
+
+class BabyHandler(webapp2.RequestHandler):
+	def get(self):
+		response = urllib2.urlopen('https://randomuser.me/api/?results=10')
+		content = response.read()
+		content_dictionary = json.loads(content)
+		template = jinja_environment.get_template('BSFv3.html')
+		self.response.out.write(template.render( {
+			'contents' : content_dictionary
+		}))
+
+
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/baby', BabyHandler)
 ], debug=True)

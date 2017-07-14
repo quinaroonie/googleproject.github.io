@@ -18,9 +18,26 @@ import webapp2
 import os 
 import jinja2
 import random
+import logging
+
+from google.appengine.ext import ndb
 
 jinja_enviroment = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
+# class Skill(ndb.model):
+# 	skill = ndb.StringProperty()
+# 	skill_description = ndb.StringProperty()
+
+# class Job_Position(ndb.model):
+# 	job_Position = ndb.StringProperty()
+# 	job_description = ndb.StringProperty()
+
+
+# class Education(ndb.model):
+# 	degree = ndb.StringProperty()
+# 	School = ndb.StringProperty()
+
 
 class MainHandler(webapp2.RequestHandler):
 	def get(self):
@@ -41,8 +58,14 @@ class ResumeHandler(webapp2.RequestHandler):
   		email = self.request.get('email')
   		phone_number = self.request.get('phonenumber')
   		personal_websitelink = self.request.get('personalwebsite')
+  		professional_profile =self.request.get('professionalprofile')
+  		skill_name = self.request.get('skillname')
+  		skill_description = self.request.get('skill')
+  		job_position = self.request.get('jobposition')
+  		jp_description =self.request.get('jobposition_description')
+  		education_entry = self.request.get('educationentry')
 
-
+  		
 
   		template =jinja_enviroment.get_template('finishedresume.html')
   		self.response.write(template.render(
@@ -52,6 +75,12 @@ class ResumeHandler(webapp2.RequestHandler):
   			'email': email,
   			'phonenumber': phone_number,
   			'personalwebsite': personal_websitelink,
+  			'professionalprofile': professional_profile,
+  			'skillname': skill_name,
+  			'skill': skill_description,
+  			'jobposition': job_position,
+  			'jobposition_description': jp_description,
+  			'educationentry': education_entry,
   			}))
 
   		
