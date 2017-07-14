@@ -24,14 +24,39 @@
 			Website/Linkedin Profile: <input type="text" name="personalwebsite">
 			<br>
 			<br>
-			<!-- skills starts with one then press add button/ remove button if there or more entries -->
+			Professional Profile: <br> <textarea id="text" name="professionalprofile">
+			<br>
+			<br>
+			<!-- skills starts with one then press add button/ remove button if there or more entries skills and description are in a div-->
 			<div>
-				Skill Name: <input type="text" name="skillname">
+			<!-- entry -->
+				Skills:
 				<br>
 				<br>
-				Description of Skill: <br> <textarea class="submissonfield" id="text">Write your decription here.</textarea>
+					Name:  <input type="text" name="skillname">
+					<br>
+					<br>
+					Description of skill: <br> <textarea class="submissonfield" id="text" name="skill">Write your decription here.</textarea>
+					<br>
+					<br>
+			</div>
+			<div>Experience:</div>
+			<div>
+				<br>
+				<!-- Entry -->
+				Job Position : <input type="text" name="jobposition">
 				<br>
 				<br>
+				Description of previous postions: <br> <textarea class="submissonfield" id="text" name="jobposition_description">Write your decription here.</textarea>
+
+
+			</div>
+			<br>
+			<br>
+			<div>Education:</div>
+			<div>
+				<br>
+				Degrees and School: <br> <textarea class="submissonfield" id="text" name="educationentry"> Name of Degree: School of which you earn degree.</textarea>
 			</div>
 
 			<input type="submit" id="submit" value="Finished">
