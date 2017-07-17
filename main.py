@@ -25,12 +25,15 @@ import json
 jinja_environment = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(
 		os.path.dirname(__file__)))
-class MainHandler(webapp2.RequestHandler):
+class SignupHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('apphome.html')
+        template = jinja_environment.get_template('signup.html')
         self.response.write(template.render())
  
-    def post(self):
+    
+class HomeHandler(webapp2.RequestHandler):
+    def post(self):  
+
         name_from_form = self.request.get('parent')
         page_from_form=self.request.get('parentAge')
         page_from_form= int(page_from_form)
@@ -40,19 +43,19 @@ class MainHandler(webapp2.RequestHandler):
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
                 
+        template = jinja_environment.get_template('homepage.html')
 
-
-
-        student_model = Student(name=name_from_form, grade=grade_from_form)
-        student_model.put()
-
-        template = jinja_environment.get_template('apphome.html')
         self.response.write(template.render(
             {
-              'name': name_from_form
+              'name': name_from_form,
+              'parentAge':page_from_form,
+              'pJob':job_from_form,
+              'kAmount':kamount_from_form,
+              'pAge':page_from_form,
+              'kAge':kage_from_form,
+              
             }
             ))
-
 
 
 class BabyHandler(webapp2.RequestHandler):
@@ -68,5 +71,7 @@ class BabyHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/baby', BabyHandler)
+    ('/baby', BabyHandler),
+    ('/signup',SignupHandler),
+    ('/home', HomeHandler )
 ], debug=True)
