@@ -65,6 +65,47 @@ class BabyHandler(webapp2.RequestHandler):
 			'contents' : content_dictionary
 		}))
 
+class ResumeHandler(webapp2.RequestHandler):
+    """docstring for ResumeHandler"""
+    def get(self):
+
+        
+        template = jinja_enviroment.get_template('startresume.html')
+        self.response.write(template.render())
+
+    def post(self):
+
+        name = self.request.get('name')
+        job_title = self.request.get('jobtitle')
+        email = self.request.get('email')
+        phone_number = self.request.get('phonenumber')
+        personal_websitelink = self.request.get('personalwebsite')
+        professional_profile =self.request.get('professionalprofile')
+        skill_name = self.request.get('skillname')
+        skill_description = self.request.get('skill')
+        job_position = self.request.get('jobposition')
+        jp_description =self.request.get('jobposition_description')
+        education_entry = self.request.get('educationentry')
+
+        
+
+        template =jinja_enviroment.get_template('finishedresume.html')
+        self.response.write(template.render(
+            {
+            'name': name,
+            'jobtitle': job_title,
+            'email': email,
+            'phonenumber': phone_number,
+            'personalwebsite': personal_websitelink,
+            'professionalprofile': professional_profile,
+            'skillname': skill_name,
+            'skill': skill_description,
+            'jobposition': job_position,
+            'jobposition_description': jp_description,
+            'educationentry': education_entry,
+            }))
+
+
 
 
 app = webapp2.WSGIApplication([
