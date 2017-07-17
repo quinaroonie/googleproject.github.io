@@ -65,18 +65,36 @@ class BabyHandler(webapp2.RequestHandler):
 			'contents' : content_dictionary
 		}))
 
+# class Skill(ndb.model):
+#   skill = ndb.StringProperty()
+#   skill_description = ndb.StringProperty()
+
+# class Job_Position(ndb.model):
+#   job_Position = ndb.StringProperty()
+#   job_description = ndb.StringProperty()
+
+
+# class Education(ndb.model):
+#   degree = ndb.StringProperty()
+#   School = ndb.StringProperty()
+
+       
+
 class ResumeHandler(webapp2.RequestHandler):
     """docstring for ResumeHandler"""
     def get(self):
 
         
-        template = jinja_enviroment.get_template('startresume.html')
+        template = jinja_environment.get_template('startresume.html')
         self.response.write(template.render())
 
     def post(self):
 
         name = self.request.get('name')
+        capname = name.upper()
         job_title = self.request.get('jobtitle')
+        capjob_title = job_title.upper()
+
         email = self.request.get('email')
         phone_number = self.request.get('phonenumber')
         personal_websitelink = self.request.get('personalwebsite')
@@ -89,11 +107,11 @@ class ResumeHandler(webapp2.RequestHandler):
 
         
 
-        template =jinja_enviroment.get_template('finishedresume.html')
+        template =jinja_environment.get_template('finishedresume.html')
         self.response.write(template.render(
             {
-            'name': name,
-            'jobtitle': job_title,
+            'name': capname,
+            'jobtitle': capjob_title,
             'email': email,
             'phonenumber': phone_number,
             'personalwebsite': personal_websitelink,
@@ -109,5 +127,6 @@ class ResumeHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/baby', BabyHandler)
+    ('/baby', BabyHandler),
+    ('/resume',ResumeHandler)
 ], debug=True)
