@@ -2,6 +2,8 @@
 	<head>
 		<title>Resume Builder</title>
 		<link rel="stylesheet" href="/resources/startresume.css">
+		<script src =" http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="/resources/startresumejavascript.js"></script>
 	</head>
 	<body>
 		<h1>Resume Builder</h1>
@@ -28,19 +30,31 @@
 			<br>
 			<br>
 			<!-- skills starts with one then press add button/ remove button if there or more entries skills and description are in a div-->
+
 			<div>
 			<!-- entry -->
 				Skills:
-				<br>
-				<br>
-					Name:  <input type="text" name="skillname">
-					<br>
-					<br>
-					Description of skill: <br> <textarea class="submissonfield" id="text" name="skill">Write your decription here.</textarea>
-					<br>
-					<br>
 			</div>
+
+				<br>
+				<br>
+					<div id="skillcontainer">
+						<div id="skillentry0">
+							Name:  <input type="text" name="skillname">
+							<br>
+							<br>
+
+							Description of skill: <br> <textarea class="submissonfield" id="text" name="skill">Write your decription here.</textarea>
+							<br>
+							<br>
+						</div>
+					</div>
+
+			<button id="addskill" type="button">+</button> 
+			<button id="deleteskill" type="button">-</button>
+
 			<div>Experience:</div>
+
 			<div>
 				<br>
 				<!-- Entry -->
@@ -48,12 +62,13 @@
 				<br>
 				<br>
 				Description of previous postions: <br> <textarea class="submissonfield" id="text" name="des">Write your decription here.</textarea>
-
-
 			</div>
+			<button id="addexperience">+</button>
+
 			<br>
 			<br>
 			<div>Education:</div>
+
 			<div>
 				<br>
 				Name of Degree: <input type="text" name="degree">
@@ -61,10 +76,13 @@
 				<br>
 				School of which you earn degree: <input type="text" name="school">
 			</div>
+			<button id="adddegree">+</button>
+
 			<input type="submit" id="submit" value="Finished">
 			<!-- large text boxes for skills, experience/work history, education   -->
 
-
+			
 		</form>
+
 	</body>
 </html>
