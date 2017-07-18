@@ -102,8 +102,10 @@ class ResumeHandler(webapp2.RequestHandler):
         skill_name = self.request.get('skillname')
         skill_description = self.request.get('skill')
         job_position = self.request.get('jobposition')
-        jp_description =self.request.get('jobposition_description')
-        education_entry = self.request.get('educationentry')
+        jp_description = self.request.get('des')
+        degree_ = self.request.get('degree')
+
+        school = self.request.get('school')
 
         
 
@@ -119,8 +121,9 @@ class ResumeHandler(webapp2.RequestHandler):
             'skillname': skill_name,
             'skill': skill_description,
             'jobposition': job_position,
-            'jobposition_description': jp_description,
-            'educationentry': education_entry,
+            'des': jp_description,
+            'degree': degree_,
+            'school': school
             }))
 
 
