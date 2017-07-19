@@ -16,6 +16,7 @@ h3 {
   text-align: center;
   font-style: oblique;
 
+
 }
 ul {
     list-style-type: none;
@@ -69,19 +70,40 @@ li.dropdown {
 }
 
 
-
-
+tr { 
+    text-align: center;
+ }
+table {
+    align-content: center;
+     margin: 0 auto;
+     background-color: #f7efff;
+}
 
 
 </style>
+
+
+
+
+
+
+<script src="babyf.js"></script>
+
+</style>
 <!-- <script src="baby.js"></script>--> 
+
 <ul>
   <li><a href="#home">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
     <div class="dropdown-content">
+
+      <a href="#">Babysitter Finder</a>
+      <a href="#">Budget Calculator</a>
+
       <a href="#">Link 1(Baby sitter finder)</a>
       <a href="#">Link 2(Budget Calculator) </a>
+
         
     </div>
   </li>
@@ -92,11 +114,22 @@ li.dropdown {
 <h3>Babysitter Finder</h3>
 
     <table>
+
+
+
+
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Picture</th>
+
         <tr>
             <td>Name</td>
             <td>Email</td>
             <td>Gender</td>
             <td>Picture</td>
+
 
         <tr>
         {%  for  user  in  contents['results']  %}
@@ -108,6 +141,28 @@ li.dropdown {
                 <img src = "{{user['picture']['medium']}}">
             </td>
             <td> {{ user['location']['city']['state']}} </td>
+
+            <td>
+                <button onclick="myFunction()">More Information</button>
+
+                <script>
+
+                    function myFunction() {
+                            var age = Math.floor(Math.random() * 10 + 1)
+                            var hour = Math.floor(Math.random() * 15 + 1)
+                            var day = Math.floor(Math.random() * 6+ 1)
+
+                         alert("This babysitter is available for " + day + " day(s) of the week and can work for for " + hour + " hour(s) each week. They work with children " + age + " and above.")
+                            
+                            }
+
+
+                   
+                    
+                </script>
+
+            </td>
+
         </tr>
         {% endfor %}
 

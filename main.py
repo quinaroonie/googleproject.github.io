@@ -26,6 +26,9 @@ import logging
 jinja_environment = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(
 		os.path.dirname(__file__)))
+
+    
+
 class SignupHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('signup.html')
@@ -35,6 +38,7 @@ class SignupHandler(webapp2.RequestHandler):
 class HomeHandler(webapp2.RequestHandler):
     def post(self):  
 
+
         name_from_form = self.request.get('parent')
         page_from_form=self.request.get('parentAge')
         page_from_form= int(page_from_form)
@@ -43,7 +47,11 @@ class HomeHandler(webapp2.RequestHandler):
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
-                
+
+            
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
+
         template = jinja_environment.get_template('homepage.html')
 
         self.response.write(template.render(
@@ -54,9 +62,12 @@ class HomeHandler(webapp2.RequestHandler):
               'kAmount':kamount_from_form,
               'pAge':page_from_form,
               'kAge':kage_from_form,
+              'money':income_from_form,
               
+
             }
             ))
+
 
 
 class BabyHandler(webapp2.RequestHandler):
@@ -69,36 +80,29 @@ class BabyHandler(webapp2.RequestHandler):
 			'contents' : content_dictionary
 		}))
 
-# class Skill(ndb.model):
-#   skill = ndb.StringProperty()
-#   skill_description = ndb.StringProperty()
-
-# class Job_Position(ndb.model):
-#   job_Position = ndb.StringProperty()
-#   job_description = ndb.StringProperty()
-
-
-# class Education(ndb.model):
-#   degree = ndb.StringProperty()
-#   School = ndb.StringProperty()
-
-       
 
 class ResumeHandler(webapp2.RequestHandler):
     """docstring for ResumeHandler"""
     def get(self):
 
         
-        template = jinja_environment.get_template('startresume.html')
+
+        template = jinja_enviroment.get_template('startresume.html')
+
+
         self.response.write(template.render())
 
     def post(self):
 
         name = self.request.get('name')
+
+        job_title = self.request.get('jobtitle')
+
         capname = name.upper()
         job_title = self.request.get('jobtitle')
         capjob_title = job_title.upper()
 
+ 
         email = self.request.get('email')
         phone_number = self.request.get('phonenumber')
         personal_websitelink = self.request.get('personalwebsite')
@@ -137,8 +141,6 @@ class ResumeHandler(webapp2.RequestHandler):
         while True:
             next_degree_ = self.request.get('degree%r' %num3, default_value = -1)
             next_school = self.request.get('school%r' %num3, default_value = -1)
-            logging.info(next_degree_)
-            logging.info(next_school)
             if next_degree_ == -1 or next_school == -1:
                 break
             degrees.append(next_degree_)
@@ -152,10 +154,12 @@ class ResumeHandler(webapp2.RequestHandler):
             {
             'name': capname,
             'jobtitle': capjob_title,
+
             'email': email,
             'phonenumber': phone_number,
             'personalwebsite': personal_websitelink,
             'professionalprofile': professional_profile,
+
 
             'skillnames': skillnames,
             'skilldes': skilldes,
@@ -171,9 +175,11 @@ class ResumeHandler(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
+
     ('/baby', BabyHandler),
     ('/signup',SignupHandler),
     ('/', HomeHandler ),
     ('/resume',ResumeHandler),
+
 
 ], debug=True)
