@@ -1,0 +1,160 @@
+<html>
+ <style >
+ html{
+    background-image: "/resources/static_folder/playroom.jpg"
+}
+</style>
+<head>
+    <  
+</head>
+<body>
+    background-image:
+     "/resources/static_folder/playroom.jpg"
+
+<style>
+body { 
+  
+  
+  
+
+}
+
+h3 {
+  text-align: center;
+  font-style: oblique;
+  font-size: 35px;
+  font-family: "Ariel"
+
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: #9792b2;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #9792b2;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #9792b2}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+tr { 
+    text-align: center;
+ }
+table {
+    align-content: center;
+     margin: 0 auto;
+     background-color: #f7efff;
+}
+
+
+</style>
+
+
+
+
+<script src="babyf.js"></script>
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="#">Babysitter Finder</a>
+      <a href="#">Budget Calculator</a>
+        
+    </div>
+  </li>
+</ul>
+
+
+<h4>
+<h3>Babysitter Finder</h3>
+
+    <table>
+
+
+
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Picture</th>
+
+        <tr>
+        {%  for  user  in  contents['results']  %}
+        <tr>
+            <td> {{ user['name']['first'] }} </td>
+            <td> {{ user['email'] }} </td>
+            <td> {{ user['gender'] }} </td>
+            <td>
+                <img src = "{{user['picture']['medium']}}">
+            </td>
+            <td> {{ user['location']['city']['state']}} </td>
+            <td>
+                <button onclick="myFunction()">More Information</button>
+
+                <script>
+
+                    function myFunction() {
+                            var age = Math.floor(Math.random() * 10 + 1)
+                            var hour = Math.floor(Math.random() * 15 + 1)
+                            var day = Math.floor(Math.random() * 6+ 1)
+
+                         alert("This babysitter is available for " + day + " day(s) of the week and can work for for " + hour + " hour(s) each week. They work with children " + age + " and above.")
+                            
+                            }
+
+
+                   
+                    
+                </script>
+
+            </td>
+        </tr>
+        {% endfor %}
+
+        </table>
+
+</h4>
+
+</body>
+</html>
