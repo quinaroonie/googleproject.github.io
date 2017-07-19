@@ -1,0 +1,88 @@
+<html>
+	<head>
+		<title>Resume Builder</title>
+		<link rel="stylesheet" href="/resources/startresume.css">
+		<script src =" http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="/resources/startresumejavascript.js"></script>
+	</head>
+	<body>
+		<h1>Resume Builder</h1>
+		<p>
+			<font size="2">Please fill in the boxes.</font>
+		</p>
+		<form method="POST" action="/resume">
+			Name <input type="text" name="name">
+			<br>
+			<br>
+			Job Title <input type="text" name="jobtitle"> 
+			<br>
+			<br>
+			Email: <input type="text" name="email">
+			<br>
+			<br>
+			Phone Number: <input type="text" name="phonenumber">
+			<br>
+			<br>
+			Website/Linkedin Profile: <input type="text" name="personalwebsite">
+			<br>
+			<br>
+			Professional Profile: <br> <textarea id="text" name="professionalprofile">Write your professional profile.</textarea>
+			<br>
+			<br>
+			<!-- skills starts with one then press add button/ remove button if there or more entries skills and description are in a div-->
+
+			<div>
+			<!-- entry -->
+				Skills:
+			</div>
+
+				<br>
+				<br>
+					<div id="skillcontainer">
+						<div id="skillentry0">
+							Name:  <input type="text" name="skillname">
+							<br>
+							<br>
+
+							Description of skill: <br> <textarea class="submissonfield" id="text" name="skill">Write your decription here.</textarea>
+							<br>
+							<br>
+						</div>
+					</div>
+
+			<button id="addskill" type="button">+</button> 
+			<button id="deleteskill" type="button">-</button>
+
+			<div>Experience:</div>
+
+			<div>
+				<br>
+				<!-- Entry -->
+				Job Position : <input type="text" name="jobposition">
+				<br>
+				<br>
+				Description of previous postions: <br> <textarea class="submissonfield" id="text" name="des">Write your decription here.</textarea>
+			</div>
+			<button id="addexperience">+</button>
+
+			<br>
+			<br>
+			<div>Education:</div>
+
+			<div>
+				<br>
+				Name of Degree: <input type="text" name="degree">
+				<br>
+				<br>
+				School of which you earn degree: <input type="text" name="school">
+			</div>
+			<button id="adddegree">+</button>
+
+			<input type="submit" id="submit" value="Finished">
+			<!-- large text boxes for skills, experience/work history, education   -->
+
+			
+		</form>
+
+	</body>
+</html>

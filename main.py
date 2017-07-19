@@ -25,12 +25,19 @@ import json
 jinja_environment = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(
 		os.path.dirname(__file__)))
-class MainHandler(webapp2.RequestHandler):
+
+    
+
+class SignupHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_environment.get_template('apphome.html')
+        template = jinja_environment.get_template('signup.html')
         self.response.write(template.render())
  
-    def post(self):
+    
+class HomeHandler(webapp2.RequestHandler):
+    def post(self):  
+
+
         name_from_form = self.request.get('parent')
         page_from_form=self.request.get('parentAge')
         page_from_form= int(page_from_form)
@@ -39,17 +46,24 @@ class MainHandler(webapp2.RequestHandler):
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
-                
 
+            
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
 
+        template = jinja_environment.get_template('homepage.html')
 
-        student_model = Student(name=name_from_form, grade=grade_from_form)
-        student_model.put()
-
-        template = jinja_environment.get_template('apphome.html')
         self.response.write(template.render(
             {
-              'name': name_from_form
+              'name': name_from_form,
+              'parentAge':page_from_form,
+              'pJob':job_from_form,
+              'kAmount':kamount_from_form,
+              'pAge':page_from_form,
+              'kAge':kage_from_form,
+              'money':income_from_form,
+              
+
             }
             ))
 
@@ -65,18 +79,29 @@ class BabyHandler(webapp2.RequestHandler):
 			'contents' : content_dictionary
 		}))
 
+
 class ResumeHandler(webapp2.RequestHandler):
     """docstring for ResumeHandler"""
     def get(self):
 
         
+
         template = jinja_enviroment.get_template('startresume.html')
+
+
         self.response.write(template.render())
 
     def post(self):
 
         name = self.request.get('name')
+
         job_title = self.request.get('jobtitle')
+
+        capname = name.upper()
+        job_title = self.request.get('jobtitle')
+        capjob_title = job_title.upper()
+
+ 
         email = self.request.get('email')
         phone_number = self.request.get('phonenumber')
         personal_websitelink = self.request.get('personalwebsite')
@@ -84,6 +109,7 @@ class ResumeHandler(webapp2.RequestHandler):
         skill_name = self.request.get('skillname')
         skill_description = self.request.get('skill')
         job_position = self.request.get('jobposition')
+
         jp_description =self.request.get('jobposition_description')
         education_entry = self.request.get('educationentry')
 
@@ -94,6 +120,20 @@ class ResumeHandler(webapp2.RequestHandler):
             {
             'name': name,
             'jobtitle': job_title,
+
+        jp_description = self.request.get('des')
+        degree_ = self.request.get('degree')
+
+        school = self.request.get('school')
+
+        
+
+        template =jinja_environment.get_template('finishedresume.html')
+        self.response.write(template.render(
+            {
+            'name': capname,
+            'jobtitle': capjob_title,
+
             'email': email,
             'phonenumber': phone_number,
             'personalwebsite': personal_websitelink,
@@ -101,13 +141,25 @@ class ResumeHandler(webapp2.RequestHandler):
             'skillname': skill_name,
             'skill': skill_description,
             'jobposition': job_position,
+
             'jobposition_description': jp_description,
             'educationentry': education_entry,
+
+            'des': jp_description,
+            'degree': degree_,
+            'school': school
+
             }))
 
 
 
 
 app = webapp2.WSGIApplication([
-    ('/baby', BabyHandler)
+
+    ('/baby', BabyHandler),
+    ('/signup',SignupHandler),
+    ('/', HomeHandler ),
+    ('/resume',ResumeHandler),
+
+
 ], debug=True)

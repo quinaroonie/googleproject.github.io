@@ -1,0 +1,59 @@
+#name{
+	font-family: "Times New Roman" ,Times, serif;
+	font-size: 37px;
+	margin-bottom: 0em;
+	margin-left: 1em;
+
+}	
+#jobtitle{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 19px;
+	margin-top: 0em;
+	margin-bottom: 0em; 
+	margin-left: 2em;
+}
+#contactinfo{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 12px;
+	margin-top: .5em;
+	margin-left: 3em;
+}
+#propro{
+	margin-left: 2.5em;
+	margin-bottom: 2em;
+}
+.subcats{
+	letter-spacing: 3px;
+	font-weight: bold;
+	margin-left: 4em;
+	font-style: italic;
+}
+#skill{
+    display: block;
+}
+.subnames{
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.subsub{
+	margin-bottom: 2em;
+	float: none;
+	margin-left: 15em;
+	width: 30em;
+	word-wrap: break-word;
+}
+.lines{
+	margin-left: 3em;
+	margin-right: 3em;
+	border-top-style: solid;
+	border-top-color: #3d7496;
+	border-top-width: 1px;
+}
+#name, .subcats{
+	color: #3d7496;
+}
+/*#dpp{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 15px;
+}*/

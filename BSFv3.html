@@ -1,29 +1,21 @@
+
+
+<!DOCTYPE html>
 <html>
- <style >
- html{
-    background-image: "/resources/static_folder/playroom.jpg"
-}
-</style>
 <head>
-    <  
+       <link rel="stylesheet"  href="/resources/stylesheetv3.css"> 
+
 </head>
 <body>
-    background-image:
-     "/resources/static_folder/playroom.jpg"
-
 <style>
 body { 
-  
-  
-  
-
+  background-color: white; 
+  background-image: "/resources/static_folder/playroom.jpg";
 }
-
 h3 {
   text-align: center;
   font-style: oblique;
-  font-size: 35px;
-  font-family: "Ariel"
+
 
 }
 ul {
@@ -77,6 +69,7 @@ li.dropdown {
     display: block;
 }
 
+
 tr { 
     text-align: center;
  }
@@ -92,14 +85,25 @@ table {
 
 
 
+
+
 <script src="babyf.js"></script>
+
+</style>
+<!-- <script src="baby.js"></script>--> 
+
 <ul>
   <li><a href="#home">Home</a></li>
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
     <div class="dropdown-content">
+
       <a href="#">Babysitter Finder</a>
       <a href="#">Budget Calculator</a>
+
+      <a href="#">Link 1(Baby sitter finder)</a>
+      <a href="#">Link 2(Budget Calculator) </a>
+
         
     </div>
   </li>
@@ -113,11 +117,19 @@ table {
 
 
 
+
         <tr>
             <th>Name</th>
             <th>Email</th>
             <th>Gender</th>
             <th>Picture</th>
+
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Picture</td>
+
 
         <tr>
         {%  for  user  in  contents['results']  %}
@@ -129,6 +141,7 @@ table {
                 <img src = "{{user['picture']['medium']}}">
             </td>
             <td> {{ user['location']['city']['state']}} </td>
+
             <td>
                 <button onclick="myFunction()">More Information</button>
 
@@ -149,6 +162,7 @@ table {
                 </script>
 
             </td>
+
         </tr>
         {% endfor %}
 
