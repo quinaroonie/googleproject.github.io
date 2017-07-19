@@ -6,8 +6,16 @@ body {
   background: #8E44AD;
 	text-align: center;
 }
-
-
+.container {
+        width: 500px;
+        clear: both;
+        text-align: center;
+}
+.container input {
+        width: 100%;
+        clear: both;
+        text-align: center;
+}
 
 .letters {
   color: #FFF;
@@ -15,13 +23,13 @@ body {
   animation: color-changer 6s infinite;
   transition: color-changer ease-in-out;
 }
-.container {
+.dropdiv {
     overflow: hidden;
     background-color: #333;
     font-family: Arial;
 }
 
-.container a {
+.dropdiv a {
     float: left;
     font-size: 16px;
     color: white;
@@ -67,7 +75,7 @@ body {
   }
  
   100% {
-    color: #FFF;
+    color: black;
   }
   
 }
@@ -146,4 +154,33 @@ body {
 
 #a11 {
   animation-delay: 1.1s;
+}
+#afam{
+  height: 250px;
+  width: 400px; 
+  float: right;
+  margin: 0 0 10px 10px;
+}
+#bfam{
+  height: 250px;
+  width: 400px;
+  float: left;
+  clear: left;
+  margin: 0 0 10px 10px;
+}
+#cfam{
+  height: 250px;
+  width: 400px;
+  float: right;
+  clear: right;
+  margin: 0 0 10px 10px;
+}
+#dfam{
+  height: 250px;
+  width: 400px;
+  float: left;
+  margin: 0 0 10px 10px;
+}
+p {
+  text-align: center;
 }

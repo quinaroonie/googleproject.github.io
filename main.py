@@ -42,7 +42,9 @@ class HomeHandler(webapp2.RequestHandler):
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
-                
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
+
         template = jinja_environment.get_template('homepage.html')
 
         self.response.write(template.render(
@@ -53,6 +55,7 @@ class HomeHandler(webapp2.RequestHandler):
               'kAmount':kamount_from_form,
               'pAge':page_from_form,
               'kAge':kage_from_form,
+              'money':income_from_form,
               
             }
             ))
@@ -73,7 +76,7 @@ class BabyHandler(webapp2.RequestHandler):
 #   skill_description = ndb.StringProperty()
 
 # class Job_Position(ndb.model):
-#   job_Position = ndb.StringProperty()
+#   job_Position = ndb.StringProperty()x
 #   job_description = ndb.StringProperty()
 
 
