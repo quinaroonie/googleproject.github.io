@@ -120,6 +120,7 @@ class ResumeHandler(webapp2.RequestHandler):
             {
             'name': name,
             'jobtitle': job_title,
+            }))
 
         jp_description = self.request.get('des')
         degree_ = self.request.get('degree')
