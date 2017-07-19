@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Resume Builder</title>
-		<link rel="stylesheet" href="/resources/finishedresume.css">	
+		<link rel="stylesheet" href="/resources/finishedresume.css" media="all">	
 	</head>
 	<body>
 		<p id="name">
@@ -16,28 +16,36 @@
 		<p id="propro"> 
 			{{professionalprofile}}
 		</p>
-		<p id="SKILLS" class="subcats">
-			SKILLS ~
-		</p>
-		<p id="skillname">
-			{{skillname}}:
-		</p >
-		<p id="skill">
-			{{skill}}
-		</p>
-		<p id="Experience" class="subcats">
-			EXPERIENCE ~
-		</p>
-		<p>
-			 
-				{{jobposition}}: {{jobpositon_description}}
-		</p>
-		<p class="subcats">
-			EDUCATION ~
-		</p>
-		<p>
-			{{educationentry}}
-		</p>
+
+		<div class="lines">
+			<p id="SKILLS" class="subcats">
+				SKILLS ~</p>
+			<div>
+				<p id="skill" class="subsub"> <span class="subnames">{{skillname}}:</span> {{skill}} </p>
+			</div>
+		</div>
+
+		<div class="lines">
+			<p id="Experience" class="subcats">
+				EXPERIENCE ~ </p>
+
+			<div>
+				<p name="Experience" class="subsub"> <span class="subnames">{{jobposition}}:</span> {{des}}
+				</p>
+			</div>
+		</div>
+
+		<div class="lines">
+			<p class="subcats">
+				EDUCATION ~
+			</p>
+			<div>
+				<p class="subsub"> <span class="subnames">{{degree}}:</span> {{school}}
+				</p>
+			</div>
+		</div>
 
 	</body>
 </html>
+
+

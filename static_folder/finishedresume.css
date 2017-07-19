@@ -20,22 +20,40 @@
 }
 #propro{
 	margin-left: 2.5em;
+	margin-bottom: 2em;
 }
 .subcats{
+	letter-spacing: 3px;
 	font-weight: bold;
-	margin-left: 5em;
+	margin-left: 4em;
 	font-style: italic;
 }
-#skillname{
-	margin-left: 20em;
-	/*float: left;*/
-}
 #skill{
-	margin-left: 20em;
-	/*padding-left: 20px;*/
-	/*float: left;*/
+    display: block;
 }
-#dpp{
+.subnames{
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+.subsub{
+	margin-bottom: 2em;
+	float: none;
+	margin-left: 15em;
+	width: 30em;
+	word-wrap: break-word;
+}
+.lines{
+	margin-left: 3em;
+	margin-right: 3em;
+	border-top-style: solid;
+	border-top-color: #3d7496;
+	border-top-width: 1px;
+}
+#name, .subcats{
+	color: #3d7496;
+}
+/*#dpp{
 	font-family: "Times New Roman", Times, serif;
 	font-size: 15px;
-}
+}*/
