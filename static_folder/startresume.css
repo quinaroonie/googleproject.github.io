@@ -6,12 +6,6 @@ html{
 #text{
 	width: 400px; height: 200px; 
 }
-h1{
-	text-align: center;
-}
-h2{
-	text-align: center;
-}
 h3 {
   text-align: center;
   font-style: oblique;
@@ -135,27 +129,6 @@ li.dropdown {
     color: #FFF;
   }
   
-}
-
-.cats{
-	margin-left: 2em;
-}
-#A{
-	margin-left: 5em;
-}
-#B{
-	margin-left: 3.5em;
-}
-#C{
-	margin-left: 5em;
-}
-
-#D{
-	margin-left: 0em;
-}
-
-#E{
-	margin-left: 0em;
 }
 
 
