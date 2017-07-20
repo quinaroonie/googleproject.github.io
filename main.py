@@ -21,6 +21,14 @@ import jinja2
 import os 
 import urllib2
 import json
+import logging
+
+
+from google.appengine.ext import ndb
+
+
+
+
 
 jinja_environment = jinja2.Environment(
 	loader = jinja2.FileSystemLoader(
@@ -80,18 +88,47 @@ class BabyHandler(webapp2.RequestHandler):
 		}))
 
 
+
+# class Resume (ndb.Model):
+
+#     resumetitle =ndb.StringProperty()
+#     name = ndb.StringProperty()
+#     jobtitle = ndb.StringProperty()
+#     email = ndb.StringProperty()
+#     phonenumber = StringProperty()
+#     personalwebsitelink = StringProperty()
+#     professionalprofile = StringProperty()
+
+#     skillentrys = ListProperty()
+#     pastjobs = ListProperty()
+#     degrees = ListProperty()
+
+
 class ResumeHandler(webapp2.RequestHandler):
     """docstring for ResumeHandler"""
     def get(self):
 
         
 
-        template = jinja_enviroment.get_template('startresume.html')
-
-
+        template = jinja_environment.get_template('startresume.html')
         self.response.write(template.render())
 
     def post(self):
+
+        # resume_model = Resume(
+        #     resumetitle=resumetitle, 
+        #     name=name, 
+        #     jobtitle=capjob_title, 
+        #     email=email, 
+        #     phonenumber=phone_number,
+        #     personalwebsitelink=personal_websitelink,
+        #     skillentrys=skillentrys,
+        #     pastjobs=jobentrys,
+        #     degrees=degree_entrys,
+        #     )
+
+        # resumetitle = self.request.get('resumetitle')
+
 
         name = self.request.get('name')
 
@@ -106,26 +143,48 @@ class ResumeHandler(webapp2.RequestHandler):
         phone_number = self.request.get('phonenumber')
         personal_websitelink = self.request.get('personalwebsite')
         professional_profile =self.request.get('professionalprofile')
-        skill_name = self.request.get('skillname')
-        skill_description = self.request.get('skill')
-        job_position = self.request.get('jobposition')
 
-        jp_description =self.request.get('jobposition_description')
-        education_entry = self.request.get('educationentry')
 
-        
 
-        template =jinja_enviroment.get_template('finishedresume.html')
-        self.response.write(template.render(
-            {
-            'name': name,
-            'jobtitle': job_title,
-            }))
+        # skillentrys =[]
+        skillnames = []
+        skilldes = []
+        num = 0 
+        while True:
 
-        jp_description = self.request.get('des')
-        degree_ = self.request.get('degree')
+            next_skill_name = self.request.get('skillname%r' % num, default_value = -1)
+            next_skill_description = self.request.get('skill%r' % num, default_value = -1)
+            if next_skill_name == -1 or next_skill_description == -1:
+                break
+            skillnames.append(next_skill_name)
+            skilldes.append(next_skill_description)
+            num += 1
 
-        school = self.request.get('school')
+        # jobentrys =[]
+        pastjobs = []
+        pastjobdes = []
+        num2 = 0 
+        while True:
+            next_job_position = self.request.get('jobposition%r' % num2, default_value = -1)
+            next_jp_description = self.request.get('des%r' %num2, default_value = -1)
+            if next_job_position == -1 or next_jp_description == -1:
+                break
+            pastjobs.append(next_job_position)
+            pastjobdes.append(next_jp_description)
+            num2 += 1
+
+        # degree_entrys = []
+        degrees = []
+        schools = []
+        num3 = 0 
+        while True:
+            next_degree_ = self.request.get('degree%r' %num3, default_value = -1)
+            next_school = self.request.get('school%r' %num3, default_value = -1)
+            if next_degree_ == -1 or next_school == -1:
+                break
+            degrees.append(next_degree_)
+            schools.append(next_school)
+            num3 += 1
 
         
 
@@ -139,17 +198,16 @@ class ResumeHandler(webapp2.RequestHandler):
             'phonenumber': phone_number,
             'personalwebsite': personal_websitelink,
             'professionalprofile': professional_profile,
-            'skillname': skill_name,
-            'skill': skill_description,
-            'jobposition': job_position,
 
-            'jobposition_description': jp_description,
-            'educationentry': education_entry,
 
-            'des': jp_description,
-            'degree': degree_,
-            'school': school
+            'skillnames': skillnames,
+            'skilldes': skilldes,
 
+            'pastjobs': pastjobs,
+            'pastjobdes': pastjobdes,
+
+            'degrees': degrees,
+            'schools': schools
             }))
 
 
