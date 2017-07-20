@@ -1,4 +1,6 @@
 <html>
+
+
 	<head>
 		<title>Resume Builder</title>
 		<link rel="stylesheet" href="/resources/startresume.css">
@@ -6,11 +8,55 @@
 		<script src="/resources/startresumejavascript.js"></script>
 	</head>
 	<body>
-		<h1>Resume Builder</h1>
+
+		<ul>
+			<li><a href="/signup">Sign Up</a></li>
+  			<li><a href="/">Home</a></li>
+  			<li class="dropdown">
+   				<a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    			<div class="dropdown-content">
+      				<a href="/baby">Babysitter Finder</a>
+      				<a href="/resume">Resume Builder</a>
+
+    			</div>
+  			</li>
+		</ul>
+
+
+		<h1 id="hometitle">
+			<span class="letters" id="a1">S</span>
+			<span>---</span>
+   			<span class="letters" id="a2">I</span>
+   			<span>---</span>
+	    	<span class="letters" id="a3">N</span>
+	    	<span>---</span>
+    		<span class="letters" id="a4">G</span>
+    		<span>---</span>
+			<span class="letters" id="a5">U</span>
+			<span>---</span>
+    		<span class="letters" id="a6">L</span>
+    		<span>---</span>
+    		<span class="letters" id="a7">A</span>
+    		<span>---</span>
+    		<span class="letters" id="a8">R</span>
+    		<span>---</span>
+    		<span class="letters" id="a9">I</span>
+    		<span>---</span>
+    		<span class="letters" id="a10">T</span>
+    		<span>---</span>
+    		<span class="letters" id="a11">Y</span>
+    	</h1>
+
+
+
+		<h2>Resume Builder</h2>
 		<p>
 			<font size="2">Please fill in the boxes.</font>
 		</p>
 		<form method="POST" action="/resume">
+			<!-- Resume <input type="text" name="resumetitle">
+			<br>
+			<br> -->
 			Name <input type="text" name="name">
 			<br>
 			<br>

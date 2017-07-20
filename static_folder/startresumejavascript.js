@@ -57,7 +57,7 @@ function delete_Degree(){
 
 
 function setupEverything(){
-	alert('Set up abc');
+	//alert('Set up abc');
 
 	var buttonskilladd = $('#addskill');
 	buttonskilladd.on('click',add_Skill_Entry);
