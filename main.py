@@ -50,14 +50,13 @@ class HomeHandler(webapp2.RequestHandler):
         page_from_form=self.request.get('parentAge')
         page_from_form= int(page_from_form)
         job_from_form= self.request.get('pJob')
-
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
+ 
 
-            
-        income_from_form=self.request.get('money')
-        income_from_form= int(income_from_form)
 
         template = jinja_environment.get_template('homepage.html')
 
@@ -143,6 +142,12 @@ class ResumeHandler(webapp2.RequestHandler):
         phone_number = self.request.get('phonenumber')
         personal_websitelink = self.request.get('personalwebsite')
         professional_profile =self.request.get('professionalprofile')
+        skill_name = self.request.get('skillname')
+        skill_description = self.request.get('skill')
+        job_position = self.request.get('jobposition')
+        jp_description =self.request.get('jobposition_description')
+        education_entry = self.request.get('educationentry')
+
 
 
 
@@ -186,6 +191,7 @@ class ResumeHandler(webapp2.RequestHandler):
             schools.append(next_school)
             num3 += 1
 
+
         
 
         template =jinja_environment.get_template('finishedresume.html')
@@ -199,6 +205,13 @@ class ResumeHandler(webapp2.RequestHandler):
             'personalwebsite': personal_websitelink,
             'professionalprofile': professional_profile,
 
+            'skillname': skill_name,
+            'skill': skill_description,
+            'jobposition': job_position,
+            'jobposition_description': jp_description,
+            'educationentry': education_entry,
+
+
 
             'skillnames': skillnames,
             'skilldes': skilldes,
@@ -208,6 +221,7 @@ class ResumeHandler(webapp2.RequestHandler):
 
             'degrees': degrees,
             'schools': schools
+
             }))
 
 
@@ -216,8 +230,12 @@ class ResumeHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 
     ('/baby', BabyHandler),
+
+
     ('/',SignupHandler),
     ('/home', HomeHandler ),
+
+
     ('/resume',ResumeHandler),
 
 
