@@ -20,9 +20,15 @@
 		<div class="lines">
 			<p id="SKILLS" class="subcats">
 				SKILLS ~</p>
+			
 			<div>
-				<p id="skill" class="subsub"> <span class="subnames">{{skillname}}:</span> {{skill}} </p>
+				{% for s in skillnames %}
+				<p id="skill" class="subsub"> 
+					<span class="subnames">{{ s }}:</span> {{ skilldes[loop.index0] }} 
+				</p>
+				{% endfor %}
 			</div>
+			
 		</div>
 
 		<div class="lines">
@@ -30,8 +36,11 @@
 				EXPERIENCE ~ </p>
 
 			<div>
-				<p name="Experience" class="subsub"> <span class="subnames">{{jobposition}}:</span> {{des}}
+				{% for p in pastjobs %}
+				<p name="Experience" class="subsub"> 
+					<span class="subnames">{{ p }}:</span> {{ pastjobdes[loop.index0] }}
 				</p>
+				{% endfor %}
 			</div>
 		</div>
 
@@ -40,8 +49,12 @@
 				EDUCATION ~
 			</p>
 			<div>
-				<p class="subsub"> <span class="subnames">{{degree}}:</span> {{school}}
+
+				{% for d in degrees %}
+				<p class="subsub"> 
+					<span class="subnames">{{ d }}:</span> {{ schools[loop.index0] }}
 				</p>
+				{% endfor %}
 			</div>
 		</div>
 
