@@ -6,16 +6,25 @@ body {
   background: #8E44AD;
 	text-align: center;
 }
+
+
+h2{
+  text-align: left;
+}
+
+
 .container {
         width: 500px;
         clear: both;
-        text-align: center;
+        float: center;
 }
+
 .container input {
         width: 100%;
         clear: both;
-        text-align: center;
+        float: center;
 }
+
 
 .letters {
   color: #FFF;
@@ -23,11 +32,14 @@ body {
   animation: color-changer 6s infinite;
   transition: color-changer ease-in-out;
 }
+
+
 .dropdiv {
     overflow: hidden;
     background-color: #333;
     font-family: Arial;
 }
+
 
 .dropdiv a {
     float: left;
@@ -43,6 +55,7 @@ body {
     overflow: hidden;
 }
 
+
 .dropdown .dropbtn {
     font-size: 16px;    
     border: none;
@@ -51,6 +64,7 @@ body {
     padding: 14px 16px;
     background-color: inherit;
 }
+
 
 .container a:hover, .dropdown:hover .dropbtn {
     background-color: red;

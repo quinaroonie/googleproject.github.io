@@ -38,12 +38,12 @@ class HomeHandler(webapp2.RequestHandler):
         page_from_form=self.request.get('parentAge')
         page_from_form= int(page_from_form)
         job_from_form= self.request.get('pJob')
-
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
         kamount_from_form = self.request.get('children')
         kage_from_form=self.request.get('kAge')
         kage_from_form= int(kage_from_form)
-        income_from_form=self.request.get('money')
-        income_from_form= int(income_from_form)
+        
 
         template = jinja_environment.get_template('homepage.html')
 
@@ -108,10 +108,8 @@ class ResumeHandler(webapp2.RequestHandler):
         skill_name = self.request.get('skillname')
         skill_description = self.request.get('skill')
         job_position = self.request.get('jobposition')
-        jp_description = self.request.get('des')
-        degree_ = self.request.get('degree')
-
-        school = self.request.get('school')
+        jp_description =self.request.get('jobposition_description')
+        education_entry = self.request.get('educationentry')
 
         
 
@@ -127,9 +125,8 @@ class ResumeHandler(webapp2.RequestHandler):
             'skillname': skill_name,
             'skill': skill_description,
             'jobposition': job_position,
-            'des': jp_description,
-            'degree': degree_,
-            'school': school
+            'jobposition_description': jp_description,
+            'educationentry': education_entry,
             }))
 
 
@@ -137,8 +134,10 @@ class ResumeHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/baby', BabyHandler),
-    ('/signup',SignupHandler),
-    ('/', HomeHandler ),
+
+    ('/',SignupHandler),
+    ('/home', HomeHandler ),
+
     ('/resume',ResumeHandler),
 
 ], debug=True)
