@@ -50,32 +50,38 @@
 
 
 		<h2>Resume Builder</h2>
+		<br>
+		<br>
 		<p>
 			<font size="2">Please fill in the boxes.</font>
 		</p>
 		<form method="POST" action="/resume">
-			<!-- Resume <input type="text" name="resumetitle">
-			<br>
-			<br> -->
-			Name <input type="text" name="name">
-			<br>
-			<br>
-			Job Title <input type="text" name="jobtitle"> 
-			<br>
-			<br>
-			Email: <input type="text" name="email">
-			<br>
-			<br>
-			Phone Number: <input type="text" name="phonenumber">
-			<br>
-			<br>
-			Website/Linkedin Profile: <input type="text" name="personalwebsite">
-			<br>
-			<br>
-			Professional Profile: <br> <textarea id="text" name="professionalprofile">Write your professional profile.</textarea>
-			<br>
-			<br>
+			<div class="cats">
+			<table>
+				<!-- Resume <input type="text" name="resumetitle">
+				<br>
+				<br> -->
+				Name <input type="text" name="name" id="A">
+				<br>
+				<br>
+				Job Title <input type="text" name="jobtitle"  id="B"> 
+				<br>
+				<br>
+				Email: <input type="text" name="email"  id="C">
+				<br>
+				<br>
+				Phone Number: <input type="text" name="phonenumber" id="D">
+				<br>
+				<br>
+				Website/Linkedin Profile: <input type="text" name="personalwebsite"  id="E">
+				<br>
+				<br>
+				Professional Profile: <br> <textarea id="text" name="professionalprofile" >Write your professional profile.</textarea>
+				<br>
+				<br>
 			<!-- skills starts with one then press add button/ remove button if there or more entries skills and description are in a div-->
+			</table>
+			</div>
 
 			<div>
 			<!-- entry -->
@@ -84,24 +90,24 @@
 
 				<br>
 				<br>
-					<div id="skillcontainer">
+					<div id="skillcontainer" class="cats">
 						<div id="skillentry0">
 							Name:  <input type="text" name="skillname0">
 							<br>
 							<br>
 
 							Description of skill: <br> <textarea class="submissonfield" id="text" name="skill0">Write your decription here.</textarea>
-							<br>
-							<br>
 						</div>
 					</div>
 
-			<button id="addskill" type="button">+</button> 
-			<button id="deleteskill" type="button">-</button>
+			<button id="addskill" type="button" class="cats">+</button> 
+			<button id="deleteskill" type="button" >-</button>
+			<br>
+			<br>
 
 			<div>Experience:</div>
 
-			<div id="jobcontainer">
+			<div id="jobcontainer" class="cats">
 				<div id="jobentry0">
 					<br>
 					<!-- Entry -->
@@ -111,15 +117,14 @@
 					Description of previous postions: <br> <textarea class="submissonfield" id="text" name="des0">Write your decription here.</textarea>
 				</div>
 			</div>
-
-			<button id="addexperience" type="button">+</button>
-			<button id="deleteexperience" type="button">-</button>
+			<button id="addexperience" type="button" class="cats">+</button>
+			<button id="deleteexperience" type="button" >-</button>
 
 			<br>
 			<br>
 			<div>Education:</div>
 
-			<div id="degreecontainer">
+			<div id="degreecontainer" class="cats">
 				<div id="degreeentry0">
 					<br>
 					Name of Degree: <input type="text" name="degree0">
@@ -129,8 +134,10 @@
 				</div>
 			</div>
 
-			<button id="adddegree" type="button">+</button>
-			<button id="deletedegree" type="button">-</button>
+			<button id="adddegree" type="button" class="cats">+</button>
+			<button id="deletedegree" type="button" >-</button>
+			<br>
+			<br>
 
 			<input type="submit" id="submit" value="Finished">
 			<!-- large text boxes for skills, experience/work history, education   -->
