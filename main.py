@@ -158,8 +158,8 @@ class ResumeHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
 
     ('/baby', BabyHandler),
-    ('/signup',SignupHandler),
-    ('/', HomeHandler ),
+    ('/',SignupHandler),
+    ('/home', HomeHandler ),
     ('/resume',ResumeHandler),
 
 
