@@ -1,0 +1,51 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+       <link rel="stylesheet"  href="resources/stylesheetBSF.css">     
+</head>
+<body>
+<script src="baby.js"></script>
+<ul>
+  <li><a href="#home">Home</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+    <div class="dropdown-content">
+      <a href="#">Link 1(Baby sitter finder)</a>
+      <a href="#">Link 2(Budget Calculator) </a>
+        
+    </div>
+  </li>
+</ul>
+
+
+
+<h3>Babysitter Finder</h3>
+
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Gender</td>
+            <td>Picture</td>
+
+        <tr>
+        {%  for  user  in  contents['results']  %}
+        <tr>
+            <td> {{ user['name']['first'] }} </td>
+            <td> {{ user['email'] }} </td>
+            <td> {{ user['gender'] }} </td>
+            <td>
+                <img src = "{{user['picture']['medium']}}">
+            </td>
+            <td> {{ user['location']['city']['state']}} </td>
+        </tr>
+        {% endfor %}
+
+        </table>
+
+
+
+</body>
+</html>

@@ -22,7 +22,7 @@ import os
 import urllib2
 import json
 import logging
-
+from google.appengine.api import users
 
 from google.appengine.ext import ndb
 
@@ -31,18 +31,14 @@ from google.appengine.ext import ndb
 
 
 jinja_environment = jinja2.Environment(
-	loader = jinja2.FileSystemLoader(
-		os.path.dirname(__file__)))
+    loader = jinja2.FileSystemLoader(
+        os.path.dirname(__file__)))
 
-    
 
 class SignupHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_environment.get_template('signup.html')
         self.response.write(template.render())
- 
-    
-class HomeHandler(webapp2.RequestHandler):
     def post(self):  
 
 
@@ -73,18 +69,86 @@ class HomeHandler(webapp2.RequestHandler):
 
             }
             ))
+class Home(ndb.Model):
+        name = ndb.StringProperty()
+        page=ndb.IntegerProperty()
+        
+        job= ndb.StringProperty()
+        income=ndb.IntegerProperty()
+       
+        kamount =ndb.IntegerProperty()
+        kage= ndb.IntegerProperty()
+
+        user = ndb.StringProperty()
+       
+                
+class HomeHandler(webapp2.RequestHandler):
+    def get(self):
+        loggedin_user = users.get_current_user()
+        home_model = Home.query(Home.user == str(loggedin_user.user_id())).get()
+        if home_model:
+            template = jinja_environment.get_template('homepage.html')
+            self.response.write(template.render(
+            {
+              'name': home_model.name,
+              'parentAge':home_model.page,
+              'pJob':home_model.job,
+              'kAmount':home_model.kamount,
+             
+              'kAge':home_model.kage,
+              'money':home_model.income,
+              
+
+            }
+            ))
+        else:
+            self.redirect('/')
+    def post(self):  
+
+
+        name_from_form = self.request.get('parent')
+        page_from_form=self.request.get('parentAge')
+        page_from_form= int(page_from_form)
+        job_from_form= self.request.get('pJob')
+        income_from_form=self.request.get('money')
+        income_from_form= int(income_from_form)
+        kamount_from_form = self.request.get('children')
+        kamount_from_form = int(kamount_from_form)
+        kage_from_form=self.request.get('kAge')
+        kage_from_form= int(kage_from_form)
+        loggedin_user= users.get_current_user()
+
+        Home_model= Home(name = name_from_form, page=page_from_form,job= job_from_form,
+             income=income_from_form, kamount =kamount_from_form,kage= kage_from_form, user= loggedin_user.user_id())
+        Home_key= Home_model.put()
+
+        template = jinja_environment.get_template('homepage.html')
+
+        self.response.write(template.render(
+            {
+              'name': name_from_form,
+              'parentAge':page_from_form,
+              'pJob':job_from_form,
+              'kAmount':kamount_from_form,
+              'pAge':page_from_form,
+              'kAge':kage_from_form,
+              'money':income_from_form,
+              
+
+            }
+            ))
 
 
 
 class BabyHandler(webapp2.RequestHandler):
-	def get(self):
-		response = urllib2.urlopen('https://randomuser.me/api/?results=10')
-		content = response.read()
-		content_dictionary = json.loads(content)
-		template = jinja_environment.get_template('BSFv3.html')
-		self.response.out.write(template.render( {
-			'contents' : content_dictionary
-		}))
+    def get(self):
+        response = urllib2.urlopen('https://randomuser.me/api/?results=10')
+        content = response.read()
+        content_dictionary = json.loads(content)
+        template = jinja_environment.get_template('BSFv3.html')
+        self.response.out.write(template.render( {
+            'contents' : content_dictionary}))
+       
 
 
 
